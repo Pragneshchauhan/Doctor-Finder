@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title> Booking</title>
+	</head>
+	<body>
+		<form method="POST" action="{% url 'booking_appointment' pk=doctor.id %}">
+			{% csrf_token %}
+			<table>
+				
+				<tr>
+					<td><input type="text" name='fn' placeholder="Your Full Name" ></td>
+				</tr>
+				<tr>
+					<td><input type="text"  name='em' placeholder="Email"></td>
+				</tr>
+				<tr>
+					<td><input type="text"  name='symtoms' placeholder="Symtoms"></td>
+				</tr>
+				<tr>
+					<td><input type="text"  name='appointment_status' placeholder="appointment_status"></td>
+				</tr>
+				<tr>
+					<td>
+						<!-- <input type="hidden" name='id' value="{{ doctor.id }}"/> -->
+						<input type="submit"  value="Book"/></td>
+				</tr>
+			</table>
+			
+		</form>
+	</body>
+</html>

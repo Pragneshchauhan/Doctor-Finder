@@ -1,0 +1,476 @@
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en">
+	
+<!-- Mirrored from dreamguys.co.in/demo/doccure/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Dec 2019 08:15:28 GMT -->
+<head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		<title>DoctorFinder</title>
+		
+		<!-- Favicons -->
+		<link type="image/x-icon" href="{% static 'myapp/img/favicon.png' %}" rel="icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'myapp/css/bootstrap.min.css' %}">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static '/myapp/plugins/fontawesome/css/fontawesome.min.css">/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static '/myapp/plugins/fontawesome/css/all.min.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static '/myapp/css/style.css' %}">
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+	
+	</head>
+	<body>
+		
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+			
+		
+			<!-- Header -->
+			<header class="header">
+				<nav class="navbar navbar-expand-lg header-nav">
+					<div class="footer-logo">
+						<ul class="main-nav" style="margin-top: -50px;">
+						
+						<img src="{% static 'myapp/img/logo123.png' %}" width="330"  alt="logo">
+						
+							<li>
+								<a href="{% url 'patienthomepage' %}">Home</a>
+							</li>
+							<li class="has-submenu">
+								<a href="{% url 'doctors1' %}">Doctors</a>
+								
+							</li>	
+							<li class="has-submenu">
+								<a href="{% url 'specia1' %}">Specialities </a>
+								
+							</li>
+							<li class="has-submenu">
+								<a href="{% url 'appointmentlist' %}">Appointment </a>
+								
+							</li>		
+							
+							<li class="has-submenu">
+								<a href="#">Blog </a>
+								
+							</li>
+							<li>
+								<a href="admin/index.html" >About Us</a>
+							</li>
+						</ul>	
+					</div> 
+					
+						
+					 
+					
+					<li class="nav-item dropdown has-arrow logged-item" style="margin-top: -5px;">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							<span class="user-img">
+								<p>
+								<img class="rounded-circle" src="{{MEDIA_URL}}{{patientss.profile_pic.url}}" width="45" height="42" <p>  {{patientss.firstname}} {{patientss.lastname}} </p>>
+								</p>
+							</span>
+
+						</a>
+						<div class="dropdown-menu dropdown-menu-right">
+							<div class="user-header">
+								<div class="avatar avatar-sm">
+									<img src="{{MEDIA_URL}}{{patientss.profile_pic.url}}" alt="User Image" class="avatar-img rounded-circle">
+								</div>
+								<div class="user-text">
+									<h6>{{patientss.firstname}} {{patientss.lastname}}</h6>
+									<p class="text-muted mb-0"></p>
+								</div>
+							</div>
+							<a class="dropdown-item" href="{% url 'patienthomepage' %}">HomePage</a>
+							<a class="dropdown-item" href="{% url 'patientprofilesettings' %}">Profile Settings</a>
+							<a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+						</div>
+					</li>
+				</nav>
+			</header>
+			<!-- /Header -->
+			
+			
+			<!-- Home Banner -->
+			<section class="section section-search">
+				<div class="container-fluid">
+					<div class="banner-wrapper">
+						<div class="banner-header text-center">
+							<h1>Search Doctor, Make an Appointment</h1>
+							<p>Discover the best doctors, clinic & hospital the city nearest to you.</p>
+						</div>
+                         
+						<!-- Search -->
+						<div class="search-box">
+							<form method='GET' action="{% url 'patientdashboard' %}">
+								<div class="col-lg-2 col-md-6"></div>
+								<div class="form-group search-info">
+									<input type="text" name="query" id="query" class="form-control" placeholder="Search Doctors, Clinics, Hospitals, Diseases Etc">
+									<span class="form-text"></span>
+								</div>
+								<button type="submit" class="btn btn-primary search-btn"><i class="fas fa-search"> </i></button>
+								<div class="col-lg-2 col-md-6"></div>
+
+							</form>
+						</div>
+						<!-- /Search -->
+						
+					</div>
+				</div>
+			</section>
+			<!-- /Home Banner -->
+			  
+			<!-- Clinic and Specialities -->
+			<section class="section section-specialities">
+				<div class="container-fluid">
+					<div class="section-header text-center">
+						<h2>Specialities</h2>
+					</div>
+					<div class="row justify-content-center">
+						<div class="col-md-9">
+							<!-- Slider -->
+							<div class="specialities-slider slider">
+							
+								<!-- Slider Item -->
+								<div class="speicality-item text-center">
+									<div class="speicality-img">
+										<img src="{% static 'myapp/img/specialities/specialities-01.png' %}" class="img-fluid" alt="Speciality">
+										<span><i class="fa fa-circle" aria-hidden="true"></i></span>
+									</div>
+									<a href="{% url 'Cardiologist1' %}"> <p>Cardiologist</p> </a>
+								</div>	
+								<!-- /Slider Item -->
+								
+								<!-- Slider Item -->
+								<div class="speicality-item text-center">
+									<div class="speicality-img">
+										<img src="{% static 'myapp/img/specialities/specialities-02.png' %}" class="img-fluid" alt="Speciality">
+										<span><i class="fa fa-circle" aria-hidden="true"></i></span>
+									</div>
+									<a href="{% url 'Surgeon1' %}"><p>Surgeon</p></a>	
+								</div>							
+								<!-- /Slider Item -->
+								
+								<!-- Slider Item -->
+								<div class="speicality-item text-center">
+									<div class="speicality-img">
+										<img src="{% static 'myapp/img/specialities/specialities-03.png' %}" class="img-fluid" alt="Speciality">
+										<span><i class="fa fa-circle" aria-hidden="true"></i></span>
+									</div>	
+									<a href="{% url 'Radiologist1' %}"><p>Radiologist</p></a>	
+								</div>							
+								<!-- /Slider Item -->
+								
+								
+								
+							</div>
+							<!-- /Slider -->
+							
+						</div>
+					</div>
+				</div>   
+			</section>	 
+			<!-- Clinic and Specialities -->
+		  
+			<!-- Popular Section -->
+			<form action="{% url 'favourites' %}" method="POST"></form>
+			<section class="section section-doctor">
+				<div class="container-fluid">
+				   <div class="row">
+						<div class="col-lg-4">
+							<div class="section-header ">
+								<h2>Book Our Doctor</h2>
+							</div>
+							
+						</div>
+						
+						<div class="col-lg-12">
+							<div class="doctor-slider slider">
+							
+								<!-- Doctor Widget -->
+								{% if all_doctor %}
+								{% for i in all_doctor %}
+								<div class="profile-widget">
+									<div class="doc-img">
+										<a href="doctor-profile.html">
+											<img class="img-fluid" alt="User Image" src="{{MEDIA_URL}}{{i.profile_pic.url}}">
+										</a>
+										
+									</div>
+									<div class="pro-content">
+										<h3 class="title">
+											<a href="{% url 'doctor_profile1' pk=i.id %}">{{ i.DoctorFullName }}</a> 
+											<i class="fas fa-check-circle verified"></i>
+										</h3>
+										<p class="speciality">{{ i.speciality }}</p>
+								
+										<ul class="available-info">
+											<li>
+												<i class="fas fa-map-marker-alt"></i> {{ i.city }}
+											</li>
+											<li>
+												<i class="far fa-clock"></i> Available on Fri, 22 Mar
+											</li>
+											<li>
+												<i class="far fa-money-bill-alt"></i> $300 - $1000 
+												<i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i>
+											</li>
+										</ul>
+										<div class="row row-sm">
+											<div class="col-6">
+												<a href="{% url 'doctor_profile1' pk=i.id %}" class="btn view-btn">View Profile</a>
+											</div>
+											<div class="col-6">
+												<a href="{% url 'bookingpage' pk=i.id %}" class="btn book-btn">Book Now</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								{% endfor %}
+								{% endif %}
+								<!-- /Doctor Widget -->
+						
+								
+								<!-- Doctor Widget -->
+								
+							</div>
+						</div>
+						
+				   </div>
+				</div>
+			</section>
+		</form>
+			<!-- /Popular Section -->
+		   
+		   <!-- Availabe Features -->
+		   <section class="section section-features">
+				<div class="container-fluid">
+				   <div class="row">
+						<div class="col-md-5 features-img">
+							<img src="{% static 'myapp/img/features/feature.png' %}" class="img-fluid" alt="Feature">
+						</div>
+						<div class="col-md-7">
+							<div class="section-header">	
+								<h2 class="mt-2">Availabe Features in Our Clinic</h2>
+								<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+							</div>	
+							<div class="features-slider slider">
+								<!-- Slider Item -->
+								<div class="feature-item text-center">
+									<img src="{% static 'myapp/img/features/feature-01.jpg' %}" class="img-fluid" alt="Feature">
+									<p>Patient Ward</p>
+								</div>
+								<!-- /Slider Item -->
+								
+								<!-- Slider Item -->
+								<div class="feature-item text-center">
+									<img src="{% static 'myapp/img/features/feature-02.jpg' %}" class="img-fluid" alt="Feature">
+									<p>Test Room</p>
+								</div>
+								<!-- /Slider Item -->
+								
+								<!-- Slider Item -->
+								<div class="feature-item text-center">
+									<img src="{% static 'myapp/img/features/feature-03.jpg' %}" class="img-fluid" alt="Feature">
+									<p>ICU</p>
+								</div>
+								<!-- /Slider Item -->
+								
+								<!-- Slider Item -->
+								<div class="feature-item text-center">
+									<img src="{% static 'myapp/img/features/feature-04.jpg' %}" class="img-fluid" alt="Feature">
+									<p>Laboratory</p>
+								</div>
+								<!-- /Slider Item -->
+								
+								<!-- Slider Item -->
+								<div class="feature-item text-center">
+									<img src="{% static 'myapp/img/features/feature-05.jpg' %}" class="img-fluid" alt="Feature">
+									<p>Operation</p>
+								</div>
+								<!-- /Slider Item -->
+								
+								<!-- Slider Item -->
+								<div class="feature-item text-center">
+									<img src="{% static 'myapp/img/features/feature-06.jpg' %}" class="img-fluid" alt="Feature">
+									<p>Medical</p>
+								</div>
+								<!-- /Slider Item -->
+							</div>
+						</div>
+				   </div>
+				</div>
+			</section>		
+			<!-- Availabe Features -->
+		
+			
+			<!-- Footer -->
+<footer class="footer">
+				
+	<!-- Footer Top -->
+	<div class="footer-top">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+				
+					<!-- Footer Widget -->
+					<div class="footer-widget footer-about">
+						<div class="footer-logo">
+							<p style="color: aliceblue;font-size: xx-large;"></p>
+							<img src="{% static 'myapp/img/logo12.png' %}" width="260" alt="logo">
+						</div>
+						<div class="footer-about-content">
+							<!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> -->
+							<div class="social-icon">
+								<!-- <ul>
+									<li>
+										<a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+									</li>
+									<li>
+										<a href="#" target="_blank"><i class="fab fa-twitter"></i> </a>
+									</li>
+									<li>
+										<a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+									</li>
+									<li>
+										<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+									</li>
+									<li>
+										<a href="#" target="_blank"><i class="fab fa-dribbble"></i> </a>
+									</li>
+								</ul> -->
+							</div>
+						</div>
+					</div>
+					<!-- /Footer Widget -->
+					
+				</div>
+				
+				<div class="col-lg-3 col-md-6">
+				
+					<!-- Footer Widget -->
+					<div class="footer-widget footer-menu">
+						<!-- <h2 class="footer-title">For Patients</h2>
+						<ul>
+							<li><a href="search.html"><i class="fas fa-angle-double-right"></i> Search for Doctors</a></li>
+							<li><a href="login.html"><i class="fas fa-angle-double-right"></i> Login</a></li>
+							<li><a href="register.html"><i class="fas fa-angle-double-right"></i> Register</a></li>
+							<li><a href="booking.html"><i class="fas fa-angle-double-right"></i> Booking</a></li>
+							<li><a href="patient-dashboard.html"><i class="fas fa-angle-double-right"></i> Patient Dashboard</a></li>
+						</ul> -->
+					</div>
+					<!-- /Footer Widget -->
+					
+				</div>
+				
+				<div class="col-lg-3 col-md-6">
+				
+					<!-- Footer Widget -->
+					<div class="footer-widget footer-menu">
+						<!-- <h2 class="footer-title">For Doctors</h2>
+						<ul>
+							<li><a href="appointments.html"><i class="fas fa-angle-double-right"></i> Appointments</a></li>
+							<li><a href="chat.html"><i class="fas fa-angle-double-right"></i> Chat</a></li>
+							<li><a href="login.html"><i class="fas fa-angle-double-right"></i> Login</a></li>
+							<li><a href="doctor-register.html"><i class="fas fa-angle-double-right"></i> Register</a></li>
+							<li><a href="doctor-dashboard.html"><i class="fas fa-angle-double-right"></i> Doctor Dashboard</a></li>
+						</ul> -->
+					</div>
+					<!-- /Footer Widget -->
+					
+				</div>
+				
+				<div class="col-lg-3 col-md-6">
+				
+					<!-- Footer Widget -->
+					<div class="footer-widget footer-contact">
+						<h2 class="footer-title">Contact Us</h2>
+						<div class="footer-contact-info">
+							<div class="footer-address">
+								<span><i class="fas fa-map-marker-alt"></i></span>
+								<p> c304 Shivam Recidency , near Sola Bhagvat  </p>
+							</div>
+							<p>
+								<i class="fas fa-phone-alt"></i>
+								+91 9876543210
+							</p>
+							<p class="mb-0">
+								<i class="fas fa-envelope"></i>
+								docctorfinder@example.com
+							</p>
+						</div>
+					</div>
+					<!-- /Footer Widget -->
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!-- /Footer Top -->
+	
+	<!-- Footer Bottom -->
+	<div class="footer-bottom">
+		<div class="container-fluid">
+		
+			<!-- Copyright -->
+			<div class="copyright">
+				<div class="row">
+					<div class="col-md-6 col-lg-6">
+						<div class="copyright-text">
+							<p class="mb-0">&copy; 2020 Doctor Finder</p>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-6">
+					
+						<!-- Copyright Menu -->
+						<div class="copyright-menu">
+							<ul class="policy-menu">
+								<li><a href="term-condition.html">Terms and Conditions</a></li>
+								<li><a href="privacy-policy.html">Policy</a></li>
+							</ul>
+						</div>
+						<!-- /Copyright Menu -->
+						
+					</div>
+				</div>
+			</div>
+			<!-- /Copyright -->
+			
+		</div>
+	</div>
+	<!-- /Footer Bottom -->
+	
+</footer>
+<!-- /Footer -->
+
+	   </div>
+	   <!-- /Main Wrapper -->
+	  
+		<!-- jQuery -->
+		<script src="{% static 'myapp/js/jquery.min.js' %}"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="{% static 'myapp/js/popper.min.js' %}"></script>
+		<script src="{% static 'myapp/js/bootstrap.min.js' %}"></script>
+		
+		<!-- Slick JS -->
+		<script src="{% static 'myapp/js/slick.js' %}"></script>
+		
+		<!-- Custom JS -->
+		<script src="{% static 'myapp/js/script.js' %}"></script>
+		
+	</body>
+
+<!-- Mirrored from dreamguys.co.in/demo/doccure/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Dec 2019 08:16:12 GMT -->
+</html>

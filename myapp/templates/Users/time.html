@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Timing</title>
+    </head>
+    <body>
+        <form method="POST" action="{% url 'timeset' %}">
+			{% csrf_token %}
+		<table>
+			<tr>
+				<td><input type="time" name='openat'>Open At</td>
+			</tr>
+			<tr>
+				<td><input type="time" name='closeat'>Close At</td>
+			</tr>
+			<tr>
+				<td><input type="submit" >Submit</td>
+			</tr>
+		</table>
+		</form>
+    </body>
+</html>

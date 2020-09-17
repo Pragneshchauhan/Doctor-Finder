@@ -1,0 +1,545 @@
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en">
+	
+<!-- Mirrored from dreamguys.co.in/demo/doccure/booking.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Dec 2019 08:18:52 GMT -->
+<head>
+		<meta charset="utf-8">
+		<title>DoctorFinder</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		
+		<!-- Favicons -->
+		<link href="{% static 'myapp/img/favicon.png' %}" rel="icon">
+		
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'myapp/css/bootstrap.min.css' %}">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{% static 'myapp/plugins/fontawesome/css/fontawesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'myapp/plugins/fontawesome/css/all.min.css' %}">
+		
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="{% static 'myapp/css/style.css' %}">
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+	<style>
+		
+		table{
+  border: 1px solid black;
+  width: 100%;
+  text-align: center;
+ 
+  
+}
+th
+{
+	background-color: rgb(25, 167, 233);
+	color: white;
+}
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+	}
+td:nth-child(odd)
+{
+  
+  
+  background-color: #f2f2f2;
+  
+}
+td
+{
+	height: 50px;
+  	padding: 15px;
+	vertical-align: top;
+}
+button:hover {
+  background-color: rgb(194, 195, 196);
+  
+}
+ 
+ 
+
+
+  
+
+	</style>
+	</head>
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+		
+			
+			<!-- Breadcrumb -->
+			<div class="breadcrumb-bar">
+				<div class="container-fluid">
+					<div class="row align-items-center">
+						<div class="col-md-12 col-12">
+							<nav aria-label="breadcrumb" class="page-breadcrumb">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="{% url 'patienthomepage' %}">Home</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Booking</li>
+								</ol>
+							</nav>
+							<h2 class="breadcrumb-title">Booking</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Breadcrumb -->
+			
+			<!-- Page Content -->
+			<div class="content">
+				<div class="container">
+				
+					<div class="row">
+						<div class="col-12">
+						
+							<div class="card">
+								<div class="card-body">
+									<div class="booking-doc-info">
+										<a href="doctor-profile.html" class="booking-doc-img">
+											<img src="{{MEDIA_URL}}{{doctors.profile_pic.url}}" alt="User Image">
+										</a>
+										<div class="booking-info">
+											<h4><a href="doctor-profile.html">{{ doctors.DoctorFullName }}</a></h4>
+											<p class="text-muted mb-0"> {{ doctors.speciality }}</p>
+											<p class="text-muted mb-0">Appointment Fees : {{ doctors.Appointmentfees }}</p>
+											<p class="text-muted mb-0">Phone : {{ doctors.mobile }}</p>
+											<p class="text-muted mb-0"><i class="fas fa-map-marker-alt"></i> {{ doctors.city }}, India </p>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Schedule Widget -->
+							<div class="card booking-schedule schedule-widget">
+							
+								<!-- Schedule Header -->
+								<div class="schedule-header">
+									<div class="row">
+										<div class="col-md-12">
+										
+											<!-- Day Slot -->
+											<div class="day-slot">
+												<!-- <ul>
+													<li class="left-arrow">
+														<a href="#">
+															<i class="fa fa-chevron-left"></i>
+														</a>
+													</li>
+													{% if Mon_slot %}
+													
+													<li>
+														<span>Monday</span>
+														<span class="slot-date">{{ Mon_slot.Date }}<small class="slot-year"></small></span>
+													</li>
+													{% endif %}
+													
+													{% if Tue_slot %}
+													<li>
+														<span>Tuesday</span>
+														<span class="slot-date">{{ Tue_slot.Date }}<small class="slot-year"></small></span>
+													</li>
+													{% endif %}
+													
+													{% if Wed_slot %}
+													<li>
+														<span>Wednesday</span>
+														<span class="slot-date">{{ Wed_slot.Date }}<small class="slot-year"></small></span>
+													</li>
+													{% endif %}
+													
+													{% if Thur_slot %}
+													<li>
+														<span>Thursday</span>
+														<span class="slot-date">{{ Thur_slot.Date }}<small class="slot-year"></small></span>
+													</li>
+													{% endif %}
+													{% if Fri_slot %}
+													<li>
+														<span>Friday</span>
+														<span class="slot-date">{{ Fri_slot.Date }}<small class="slot-year"></small></span>
+													</li>
+													{% endif %}
+													{% if Sat_slot %}
+													<li>
+														<span>Saturday</span>
+														<span class="slot-date">{{ Sat_slot.Date }}<small class="slot-year"></small></span>
+													</li>
+													{% endif %}
+													{% if Sun_slot %}
+													<li>
+														<span>Sun</span>
+														<span class="slot-date">{{ Sun_slot.Date }}</span>
+													</li>
+													{% endif %}
+													<li class="right-arrow">
+														<a href="#">
+															<i class="fa fa-chevron-right"></i>
+														</a>
+													</li>
+												</ul> -->
+											</div>
+											<!-- /Day Slot -->
+											
+										</div>
+									</div>
+								</div>
+								<!-- /Schedule Header -->
+								
+								<!-- Schedule Content -->
+								<div class="schedule-cont">
+									<div class="row">
+										<div class="col-md-12">
+										
+											<!-- Time Slot -->
+											<div class="time-slot">
+												<table>
+													<thead>
+														<tr>
+															<th>Monday<p>{{ Mon_slot.Date }}</p></th>
+															<th>Tuesday<p>{{ Tue_slot.Date }}</p></th>
+															<th>Wednesday<p>{{ Wed_slot.Date }}</p></th>
+															<th>Thursday<p>{{ Thur_slot.Date }}</p></th>
+															<th>Friday<p>{{ Fri_slot.Date }}</p></th>
+															<th>Saturday<p>{{ Sat_slot.Date }}</p></th>
+															<th>Sunday<p>{{ Sun_slot.Date }}</p></th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+														<td>
+															
+															<form action="{% url 'bookappoint' pk=doctors.id %}" method="POST">
+															{% csrf_token %}
+																<input type="hidden"  name="day" value='Monday' />
+																<input type="hidden"  name="date" value='{{ Mon_slot.Date }}' />
+																{% for i in mon %}	
+															<center><button type="submit" class="btn btn-link"  name="time" value="{{ i }}" >{{ i }}:00</button></center>
+															{% endfor %}		
+															</form>
+															 
+														</td>
+														<td>
+															<form action="{% url 'bookappoint' pk=doctors.id %}" method="POST">
+															{% csrf_token %}
+																<input type="hidden" class="timing" name="day" value='Tuesday' />
+																<input type="hidden"  name="date" value='{{ Tue_slot.Date }}' />
+																{% for i in tue %}
+																<center><button type="submit" class="btn btn-link"  name="time" value="{{ i }}">{{ i }}:00</button></center>
+																{% endfor %}	
+															</form>
+														</td>
+														<td>
+															<form action="{% url 'bookappoint' pk=doctors.id %}" method="POST">
+															{% csrf_token %}
+																<input type="hidden" class="timing" name="day" value='Wednesday' />
+																<input type="hidden"  name="date" value='{{ Wed_slot.Date }}' />
+																{% for i in wed %}
+																<center><button type="submit" class="btn btn-link"  name="time" value="{{ i }}">{{ i }}:00</button></center>
+																{% endfor %}	
+															</form>
+														</td>
+														<td>
+															<form action="{% url 'bookappoint' pk=doctors.id %}" method="POST">
+															{% csrf_token %}
+																<input type="hidden" class="timing" name="day" value='Thursday' />
+																<input type="hidden"  name="date" value='{{ Thur_slot.Date }}' />
+																{% for i in th %}
+																<center><button type="submit" class="btn btn-link"  name="time" value="{{ i }}">{{ i }}:00</button></center>
+																{% endfor %}	
+															</form>
+														</td>
+														<td>
+															<form action="{% url 'bookappoint' pk=doctors.id %}" method="POST">
+															{% csrf_token %}
+																<input type="hidden" class="timing" name="day" value='Friday' />
+																<input type="hidden"  name="date" value='{{ Fri_slot.Date }}' />
+																{% for i in fri %}
+																<center><button type="submit" class="btn btn-link"  name="time" value="{{ i }}">{{ i }}:00</button></center>
+																{% endfor %}	
+															</form>
+														</td>
+														<td>
+															<form action="{% url 'bookappoint' pk=doctors.id %}" method="POST">
+															{% csrf_token %}
+																<input type="hidden" class="timing" name="day" value='Saturday' />
+																<input type="hidden"  name="date" value='{{ Sat_slot.Date }}' />
+																{% for i in sat %}
+																<center><button type="submit" class="btn btn-link"  name="time" value="{{ i }}">{{ i }}:00</button></center>
+																{% endfor %}	
+															</form>
+														</td>
+														<td>
+															<form action="{% url 'bookappoint' pk=doctors.id %}" method="POST">
+															{% csrf_token %}
+																<input type="hidden" class="timing" name="day" value='Sunday' />
+																<input type="hidden"  name="date" value='{{ Sun_slot.Date }}' />
+																{% for i in sun %}
+																<center><button type="submit" class="btn btn-link"  name="time" value="{{ i }}">{{ i }}:00</button></center>
+																{% endfor %}	
+															</form>
+														</td>
+														</tr>
+													</tbody>
+												</table>
+												
+												<!-- <ul class="clearfix">
+													<li>	
+														{% for i in mon %}
+														<form action="{% url 'bookappoint' pk=doctors.id %}" method="POST">
+															{% csrf_token %}
+														<input type="hidden" class="timing" name="day" value='Monday' />
+													
+														<center><button type="submit" class="btn btn-link"  name="time" value="{{ i }}">{{ i }}:00</button></center>
+														</form>
+														
+														{% endfor %}
+													</li>
+													
+													<li>
+														{% for i in tue %}
+														<form action="{% url 'bookappoint' pk=doctors.id %}" method="POST">
+															{% csrf_token %}
+														<input type="hidden" class="timing" name="day" value='Tuesday' />
+														<center><button type="submit" class="btn btn-link" name="time" value="{{ i }}">{{ i }}:00</button></center>
+														</form>
+														{% endfor %}
+													</li>
+													<li>
+														{% for i in wed %}
+														<form action="{% url 'bookappoint' pk=doctors.id %}" method="POST">
+															{% csrf_token %}
+														<input type="hidden" class="timing" name="day" value='Wednesday' />
+														<center><button type="submit" class="btn btn-link" name="time" value="{{ i }}">{{ i }}:00</button></center>
+														</form>
+														{% endfor %}
+													</li>
+													<li>
+														{% for i in th %}
+														<form action="{% url 'bookappoint' pk=doctors.id %}" method="POST">
+															{% csrf_token %}
+														<input type="hidden" class="timing" name="day" value='Thursday' />
+														<center><button type="submit" class="btn btn-link" name="time" value="{{ i }}">{{ i }}:00</button></center>
+														</form>
+														{% endfor %}
+													</li>
+													<li>
+														{% for i in fri %}
+														<form action="{% url 'bookappoint' pk=doctors.id %}" method="POST">
+															{% csrf_token %}
+														<input type="hidden" class="timing" name="day" value='Friday' />
+														<center><button type="submit" class="btn btn-link" name="time" value="{{ i }}">{{ i }}:00</button></center>
+														</form>
+														{% endfor %}
+													</li>
+													<li>
+														{% for i in sat %}
+														<form action="{% url 'bookappoint' pk=doctors.id %}" method="POST">
+															{% csrf_token %}
+														<input type="hidden" class="timing" name="day" value='Saturday' />
+														<center><button type="submit" class="btn btn-link" name="time" value="{{ i }}">{{ i }}:00</button></center>
+														</form>
+														{% endfor %}
+													</li>
+													<li>
+														{% for i in sun %}
+														<form action="{% url 'bookappoint' pk=doctors.id %}" method="POST">
+															{% csrf_token %}
+														<input type="hidden" class="timing" name="day" value='Sunday' />
+														<center><button type="submit" class="btn btn-link" name="time" value="{{ i }}">{{ i }}:00</button></center>
+														</form>
+														{% endfor %}
+													</li>
+												</ul> -->
+											<!-- </form> -->
+											</div>
+											<!-- /Time Slot -->
+											
+										</div>
+									</div>
+								</div>
+								<!-- /Schedule Content -->
+								
+							</div>
+							<!-- /Schedule Widget -->
+							
+							<!-- Submit Section -->
+							<!-- <div class="submit-section proceed-btn text-right">
+								<a href="" class="btn btn-primary submit-btn">Proceed to Pay</a>
+							</div> -->
+							<!-- /Submit Section -->
+							
+						</div>
+					</div>
+				</div>
+
+			</div>		
+			<!-- /Page Content -->
+   
+			<!-- Footer -->
+			<!-- Footer -->
+<footer class="footer">
+				
+	<!-- Footer Top -->
+	<div class="footer-top">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+				
+					<!-- Footer Widget -->
+					<div class="footer-widget footer-about">
+						<div class="footer-logo">
+							<!-- <p style="color: aliceblue;font-size: xx-large;">Doctor Finder</p> -->
+							<img src="{% static 'myapp/img/logo12.png' %}"width="260" alt="logo">
+						</div>
+						<div class="footer-about-content">
+							<!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> -->
+							<div class="social-icon">
+								<!-- <ul>
+									<li>
+										<a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
+									</li>
+									<li>
+										<a href="#" target="_blank"><i class="fab fa-twitter"></i> </a>
+									</li>
+									<li>
+										<a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+									</li>
+									<li>
+										<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+									</li>
+									<li>
+										<a href="#" target="_blank"><i class="fab fa-dribbble"></i> </a>
+									</li>
+								</ul> -->
+							</div>
+						</div>
+					</div>
+					<!-- /Footer Widget -->
+					
+				</div>
+				
+				<div class="col-lg-3 col-md-6">
+				
+					<!-- Footer Widget -->
+					<div class="footer-widget footer-menu">
+						<!-- <h2 class="footer-title">For Patients</h2>
+						<ul>
+							<li><a href="search.html"><i class="fas fa-angle-double-right"></i> Search for Doctors</a></li>
+							<li><a href="login.html"><i class="fas fa-angle-double-right"></i> Login</a></li>
+							<li><a href="register.html"><i class="fas fa-angle-double-right"></i> Register</a></li>
+							<li><a href="booking.html"><i class="fas fa-angle-double-right"></i> Booking</a></li>
+							<li><a href="patient-dashboard.html"><i class="fas fa-angle-double-right"></i> Patient Dashboard</a></li>
+						</ul> -->
+					</div>
+					<!-- /Footer Widget -->
+					
+				</div>
+				
+				<div class="col-lg-3 col-md-6">
+				
+					<!-- Footer Widget -->
+					<div class="footer-widget footer-menu">
+						<!-- <h2 class="footer-title">For Doctors</h2>
+						<ul>
+							<li><a href="appointments.html"><i class="fas fa-angle-double-right"></i> Appointments</a></li>
+							<li><a href="chat.html"><i class="fas fa-angle-double-right"></i> Chat</a></li>
+							<li><a href="login.html"><i class="fas fa-angle-double-right"></i> Login</a></li>
+							<li><a href="doctor-register.html"><i class="fas fa-angle-double-right"></i> Register</a></li>
+							<li><a href="doctor-dashboard.html"><i class="fas fa-angle-double-right"></i> Doctor Dashboard</a></li>
+						</ul> -->
+					</div>
+					<!-- /Footer Widget -->
+					
+				</div>
+				
+				<div class="col-lg-3 col-md-6">
+				
+					<!-- Footer Widget -->
+					<div class="footer-widget footer-contact">
+						<h2 class="footer-title">Contact Us</h2>
+						<div class="footer-contact-info">
+							<div class="footer-address">
+								<span><i class="fas fa-map-marker-alt"></i></span>
+								<p> c304 Shivam Recidency , near Sola Bhagvat  </p>
+							</div>
+							<p>
+								<i class="fas fa-phone-alt"></i>
+								+91 9876543210
+							</p>
+							<p class="mb-0">
+								<i class="fas fa-envelope"></i>
+								docctorfinder@example.com
+							</p>
+						</div>
+					</div>
+					<!-- /Footer Widget -->
+					
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!-- /Footer Top -->
+	
+	<!-- Footer Bottom -->
+	<div class="footer-bottom">
+		<div class="container-fluid">
+		
+			<!-- Copyright -->
+			<div class="copyright">
+				<div class="row">
+					<div class="col-md-6 col-lg-6">
+						<div class="copyright-text">
+							<p class="mb-0">&copy; 2020 Doctor Finder</p>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-6">
+					
+						<!-- Copyright Menu -->
+						<div class="copyright-menu">
+							<ul class="policy-menu">
+								<li><a href="term-condition.html">Terms and Conditions</a></li>
+								<li><a href="privacy-policy.html">Policy</a></li>
+							</ul>
+						</div>
+						<!-- /Copyright Menu -->
+						
+					</div>
+				</div>
+			</div>
+			<!-- /Copyright -->
+			
+		</div>
+	</div>
+	<!-- /Footer Bottom -->
+	
+</footer>
+<!-- /Footer -->
+
+			<!-- /Footer -->
+		   
+		   
+		</div>
+		<!-- /Main Wrapper -->
+	  
+		<!-- jQuery -->
+		<script src="{% static 'myapp/js/jquery.min.js' %}"></script>
+		
+		<!-- Bootstrap Core JS -->
+		<script src="{% static 'myapp/js/popper.min.js' %}"></script>
+		<script src="{% static 'myapp/js/bootstrap.min.js' %}"></script>
+		
+		<!-- Custom JS -->
+		<script src="{% static 'myapp/js/script.js' %}"></script>
+		
+	</body>
+
+<!-- Mirrored from dreamguys.co.in/demo/doccure/booking.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 09 Dec 2019 08:18:52 GMT -->
+</html>
