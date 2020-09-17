@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Report</title>
+</head>
+<body>
+    <form action="reportgen" action="Get">
+        {% csrf_token %}
+    <input type="date" name='startdate' value="Search Date:">
+    To
+    <input type="date" name='enddate' value="Search Date:">
+    <input type="submit" value="search">
+    {% if appointments %}
+    {% for i in appointments %}
+        {{ i.Patient_id.id }}
+        {{ i.Patient_id.firstname }} {{ i.Patient_id.lastname }}
+        {{ i.Date }}
+    {% endfor %}
+    {% endif %}
+    
+    </form>
+</body>
+</html>
